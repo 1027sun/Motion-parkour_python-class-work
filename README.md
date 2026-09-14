@@ -11,6 +11,7 @@
   <img alt="OpenCV" src="https://img.shields.io/badge/OpenCV-4.14-5C3EE8?logo=opencv&logoColor=white">
   <img alt="pygame-ce" src="https://img.shields.io/badge/pygame--ce-2.5-4B8BBE">
   <img alt="tests" src="https://img.shields.io/badge/tests-114%20passed-brightgreen">
+  <img alt="license" src="https://img.shields.io/badge/license-MIT-green">
 </p>
 
 ---
@@ -123,36 +124,35 @@ python camera_demo.py --fake            # 用键盘模拟六字段接口，不�
 python camera_demo.py --headless --duration 10   # 无窗口跑 10 秒，终端输出统计
 ```
 
-体态识别模块的完整安装步骤、**45 秒动作自测清单**、逐字段接口说明和游戏接入示例，见 [README_CAMERA.md](README_CAMERA.md)。
+体态识别模块的完整安装步骤、**45 秒动作自测清单**、逐字段接口说明和游戏接入示例，见 [README_CAMERA.md](preject_python_class/camera_behavior_detect/README_CAMERA.md)。
 
 ## 项目结构
 
 ```text
-camera_behavior_detect/            体态识别模块（可独立使用）
-├── camera_control/
-│   ├── control_state.py           ★ 六字段接口定义
-│   ├── camera_controller.py       采集线程 + 异步推理 + 非阻塞 get_state()
-│   ├── pose_estimator.py          MediaPipe LIVE_STREAM 适配
-│   ├── calibration.py             站立校准
-│   ├── detectors/                 换道 / 跳跃 / 下蹲 / 张臂 / 举手 判定
-│   ├── debug_view.py              调试窗口：骨架、六字段读数、FPS、延迟
-│   └── config.py                  所有识别阈值集中在这里
-├── models/                        Pose Landmarker Lite 模型
-├── tests/                         39 项视觉模块测试
-└── camera_demo.py                 独立调试入口
-
-game_ui_acheive/                   游戏本体
-├── parkour_game.py                主循环、状态机、碰撞与计分
-├── hud.py                         菜单 / 设置 / 说明 / 暂停 / 结算 / 游戏内 HUD
-├── level.py                       八种波次模式与生成节奏
-├── rendering/                     像素渲染器与粒子效果
-├── input_adapter.py               键盘与体态的统一入口
-├── camera_preview.py              摄像头帧转 pygame Surface
-├── audio.py                       代码合成的音效与循环背景乐
-└── test_game.py                   75 项游戏测试
+preject_python_class/
+├── camera_behavior_detect/          体态识别模块（可独立使用）
+│   ├── camera_control/
+│   │   ├── control_state.py         ★ 六字段接口定义
+│   │   ├── camera_controller.py     采集线程 + 异步推理 + 非阻塞 get_state()
+│   │   ├── pose_estimator.py        MediaPipe LIVE_STREAM 适配
+│   │   ├── calibration.py           站立校准
+│   │   ├── detectors/               换道 / 跳跃 / 下蹲 / 张臂 / 举手 判定
+│   │   ├── debug_view.py            调试窗口：骨架、六字段读数、FPS、延迟
+│   │   └── config.py                所有识别阈值集中在这里
+│   ├── models/                      Pose Landmarker Lite 模型
+│   ├── tests/                       39 项视觉模块测试
+│   ├── camera_demo.py               独立调试入口
+│   └── README_CAMERA.md             安装、45 秒自测与接口详解
+└── game_ui_acheive/               游戏本体
+    ├── parkour_game.py            主循环、状态机、碰撞与计分
+    ├── hud.py                     菜单 / 设置 / 说明 / 暂停 / 结算 / 游戏内 HUD
+    ├── level.py                   八种波次模式与生成节奏
+    ├── rendering/                 像素渲染器与粒子效果
+    ├── input_adapter.py           键盘与体态的统一入口
+    ├── camera_preview.py          摄像头帧转 pygame Surface
+    ├── audio.py                   代码合成的音效与循环背景乐
+    └── test_game.py               75 项游戏测试
 ```
-
-> 根目录下另有一份 `camera_control/` 和 `camera_demo.py`，是视觉模块的独立副本，用于单独交付与调试；游戏运行时使用的是 `preject_python_class/camera_behavior_detect/` 下的那一份。
 
 ## 游戏接口：六个字段
 
@@ -231,7 +231,6 @@ python -m unittest discover -s tests      # 39 项
 
 ## 后续计划
 
-- [ ] 把视觉模块的重复副本合并成一份，游戏改为按需引用
 - [ ] 继续增加关卡模式与可用动作
 - [ ] 结算页加入历史成绩记录
 
@@ -241,4 +240,6 @@ Pygame 官方示例 [aliens.py](https://github.com/pygame/pygame/blob/main/examp
 
 ---
 
-本项目为课程学习项目，未指定开源许可证。
+## 许可证
+
+本项目基于 [MIT 许可证](LICENSE) 开源。
